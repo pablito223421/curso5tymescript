@@ -1,14 +1,10 @@
 
-import React from "react";
-import {Button,Icon}  from "semantic-ui-react";
+import BasicLayout from  "../pages/layouts/BasicLayout";
 
 export default function Home() {
   return (
-    <div className="home">
-      <h1>Estamos en Next JS</h1>
-        <button >Primary</button>
-        <button >Secondary</button>
-  
-      </div>
+    <BasicLayout>
+      <h1>Estamos en la HOME</h1>
+    </BasicLayout>
   );
 }
