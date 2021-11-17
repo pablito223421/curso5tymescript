@@ -1,6 +1,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import * as React from "react" ;
 
 export default function TopBar() {
     return (
@@ -11,7 +12,7 @@ export default function TopBar() {
         <Logo/>
         </div>
         <div  className="top-bar__right">
-        <h2>Buscador</h2>
+        <Search/>
         </div>
         </div>
          </div> 
@@ -27,4 +28,12 @@ return(
 </a>
 </Link>
 )
+}
+
+function Search(){
+    return(
+     <input
+      id="search-name" 
+     />
+    );
 }
