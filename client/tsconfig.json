@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/index.js"  ],
+, "pages/index.tsx", "pages/components/Menu/Menu.tsx", "pages/components/Menu/index.tsx", "pages/components/Header/TopBar/TopBar.tsx"  ],
   "exclude": [
     "node_modules"
   ]
