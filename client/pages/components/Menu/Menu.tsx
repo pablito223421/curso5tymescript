@@ -2,11 +2,15 @@ import { useState } from "react";
 import {Container, Grid,Label,Menu,Icon} from "semantic-ui-react";
 import Link from "next/link";
 import BasicModal from "../Modal/BasicModal/BasicModal";
+import Auth from "../Auth/Auth";
 
 export default function MenuWeb(){
   
 const [showModal, setShowModal] = useState(false);
+const [titleModal, setTitleModal] = useState("Iniciar Sesión");
+
 const onShowModal = () =>setShowModal(true);
+const onCloseModal = () =>setShowModal(false);
 
    return(
        <div className="menu">
@@ -20,8 +24,12 @@ const onShowModal = () =>setShowModal(true);
         </Grid.Column>
         </Grid>
         </Container>
-        <BasicModal show={showModal} setShow={setShowModal} title="Inicia Sesion" size="small">
-        <h2>Contenido del Modal</h2>
+        <BasicModal 
+        show={showModal} 
+        setShow={setShowModal} 
+        title={titleModal} 
+        size="small">
+        <Auth onCloseModal={onCloseModal} setTitleModal={setTitleModal}/>
         </BasicModal>
        </div>
    ); 
