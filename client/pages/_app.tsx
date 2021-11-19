@@ -1,15 +1,29 @@
 import "../pages/scss/gobal.scss";
 import "react-toastify/dist/ReactToastify.css";
-import React, { useState,useMemo } from "react";
+import React, { useState,useEffect,useMemo } from "react";
 import { ToastContainer } from "react-toastify";
-import { setToken} from "../api/Token";
+import { setToken, getToken} from "../api/Token";
 import AuthContext from "../pages/context/AutoContext";
 import jwtDecode from "jwt-decode";
 
 export default function MyApp({ Component, pageProps }) {
 
   const [auth, setAuth] = useState(undefined);
-  console.log(auth);
+  const [reloadUser,setReloadUser]= useState(false);
+ 
+   useEffect( () =>{
+     const token = getToken();
+     if(token){
+       setAuth({
+        token,
+        idUser: jwtDecode(token),
+       });
+     }else{
+       setAuth(null);
+     }
+     setReloadUser(false);
+   }, [reloadUser]);
+
 
   const login = (token) =>{
     setToken(token);
@@ -21,13 +35,15 @@ export default function MyApp({ Component, pageProps }) {
 
   const authData = useMemo(
     () => ({
-        auth: () => null,
+        auth,
         login,
         logout: () => null,
-        SetReloadUser: () => null,
+        setReloadUser,
       }), 
-    []
+    [auth]
   );
+
+  if(auth===undefined) return null;
 
   return (
 
