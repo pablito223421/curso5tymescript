@@ -3,11 +3,14 @@ import {Form, Button} from "semantic-ui-react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import {toast} from "react-toastify";
+import useAuth from "../../../hooks/userAuth";
 import { loginApi } from "../../../../api/User";
 
 export default function LoginForm(props) {
     const {showRegisterForm,onCloseModal}=props;
     const [loading, setLoading] = useState(false);
+    const auth = useAuth();
+    console.log(auth);
 
     const formik= useFormik({
         initialValues:initialValues(),
