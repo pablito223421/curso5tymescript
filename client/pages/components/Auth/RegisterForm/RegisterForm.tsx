@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Form, Button} from "semantic-ui-react";
 import {useFormik} from "formik";
 import * as  Yup from "yup";
+import {registerApi} from  "../../../../../client/api/User";
 
 export default function RegisterForm(props) {
     const {showLoginForm}= props;
@@ -10,8 +11,7 @@ export default function RegisterForm(props) {
         initialValues:initialValues(),
         validationSchema: Yup.object(validationSchema()),
         onSubmit: (formData)=>{
-         console.log(formData);
-        }
+         registerApi(formData);
         },
     });
 
@@ -69,13 +69,12 @@ function initialValues(){
     };
 }
 
-function validationSchema (){
+function validationSchema(){
     return {
-    name: Yup.string().require(true),
-    lastname: Yup.string().require(true),
-    lastname: Yup.string().require(true),
-    username: Yup.string().require(true),
-    email: Yup.string().email(true).require(true),
-    password: Yup.string().require(true),
+    name: Yup.string().required("true"),
+    lastname: Yup.string().required("true"),
+    username: Yup.string().required("true"),
+    email: Yup.string().email("true").required("true"),
+    password: Yup.string().required("true"),
     };
 }
