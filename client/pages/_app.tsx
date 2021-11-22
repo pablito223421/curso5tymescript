@@ -2,14 +2,16 @@ import "../pages/scss/gobal.scss";
 import "react-toastify/dist/ReactToastify.css";
 import React, { useState,useEffect,useMemo } from "react";
 import { ToastContainer } from "react-toastify";
-import { setToken, getToken} from "../api/Token";
+import { setToken, getToken,removeToken} from "../api/Token";
 import AuthContext from "../pages/context/AutoContext";
 import jwtDecode from "jwt-decode";
+import { useRouter } from "next/dist/client/router";
 
 export default function MyApp({ Component, pageProps }) {
 
   const [auth, setAuth] = useState(undefined);
   const [reloadUser,setReloadUser]= useState(false);
+  const router = useRouter();
  
    useEffect( () =>{
      const token = getToken();
@@ -33,11 +35,19 @@ export default function MyApp({ Component, pageProps }) {
     });
   };
 
+  const logout = () => {
+    if (auth){
+      removeToken();
+      setAuth(null);
+      router.push("/");
+    }
+  }
+
   const authData = useMemo(
     () => ({
         auth,
         login,
-        logout: () => null,
+        logout,
         setReloadUser,
       }), 
     [auth]
