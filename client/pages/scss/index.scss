@@ -1,7 +1,11 @@
-//Layouts
+
 @import "../scss/colors.scss";
 
+//Layouts
 @import "../layouts/BasicLayout/BasicLayout.scss";
+
+//Pages
+@import "../../../account.scss";
 
 //components
 @import "../components/Header/Header.scss";
