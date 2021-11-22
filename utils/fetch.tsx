@@ -1,6 +1,6 @@
 import {getToken, hasExpiredToken} from "../client/api/Token";
 
-export async function name(url,params, logout) {
+export async function authFetch(url,params, logout) {
     
     const token = getToken();
 
