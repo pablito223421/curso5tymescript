@@ -1,9 +1,8 @@
 import "../pages/scss/gobal.scss";
-import "react-toastify/dist/ReactToastify.css";
 import React, { useState,useEffect,useMemo } from "react";
 import { ToastContainer } from "react-toastify";
 import { setToken, getToken,removeToken} from "../api/Token";
-import AuthContext from "../pages/context/AutoContext";
+import AuthContext from "./context/AutoContext";
 import jwtDecode from "jwt-decode";
 import { useRouter } from "next/dist/client/router";
 
@@ -74,4 +73,6 @@ export default function MyApp({ Component, pageProps }) {
     /*AuthContext.Provider*/
   );
 }
+
+
 
